@@ -46,7 +46,7 @@ jobs:
         id: check
         env:
           SOURCELIST: sources.list.d/ros2.list
-        run: |
+        run: | apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654 \
           apt-get update \
             -o Dir::Etc::sourcelist="${SOURCELIST}"
           apt-get --simulate upgrade \
