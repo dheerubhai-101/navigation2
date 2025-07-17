@@ -205,6 +205,22 @@ inline int find_next_matching_goal_in_waypoint_statuses(
   return itr - waypoint_statuses.begin();
 }
 
+inline geometry_msgs::msg::Point closest_point_on_segment();
+
+inline double distance_from_robot_pose_to_path(const nav_msgs::msg::Path& path, const geometry_msgs::msg::PoseStamped& robot_pose)
+{
+  double curr_min_dist = std::numeric_limits<double>::max();
+  size_t idx{};
+  for(idx = 0; idx < path.poses.size(); idx ++)
+  {
+    double curr_dist = euclidean_distance(robot_pose, path.poses[idx])
+    if (curr_dist> curr_min_dist)
+      break;
+    curr_min_dist = curr_dist;
+  }
+
+}
+
 }  // namespace geometry_utils
 }  // namespace nav2_util
 
