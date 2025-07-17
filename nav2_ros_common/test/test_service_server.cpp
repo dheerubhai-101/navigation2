@@ -14,13 +14,13 @@
 
 #include <memory>
 #include <string>
-#include "nav2_util/service_server.hpp"
+#include "nav2_ros_common/service_server.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_srvs/srv/empty.hpp"
 #include "std_msgs/msg/empty.hpp"
 #include "gtest/gtest.h"
 
-using nav2_util::ServiceServer;
+using nav2::ServiceServer;
 using std::string;
 
 class RclCppFixture
@@ -52,7 +52,7 @@ TEST(ServiceServer, can_handle_all_introspection_modes)
     int a = 0;
     auto node = rclcpp::Node::make_shared("test_node_" + mode);
 
-    node->declare_parameter("service_introspection_mode", mode);
+    node->declare_parameter("introspection_mode", mode);
 
     auto callback = [&a](const std::shared_ptr<rmw_request_id_t>,
       const std::shared_ptr<std_srvs::srv::Empty::Request>,
